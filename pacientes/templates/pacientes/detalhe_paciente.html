@@ -1,0 +1,15 @@
+<h1>{{ paciente.nome }}</h1>
+
+<p>Sexo: {{ paciente.sexo }}</p>
+
+<p>Altura: {{ paciente.altura }}</p>
+
+<p>Peso: {{ paciente.peso }}</p>
+
+<p>Email: {{ paciente.email }}</p>
+
+<p>Telefone: {{ paciente.telefone }}</p>
+
+<a href="{% url 'listar_pacientes' %}">
+    Voltar
+</a>

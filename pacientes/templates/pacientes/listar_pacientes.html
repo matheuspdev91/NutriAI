@@ -1,0 +1,21 @@
+<h1>Pacientes</h1>
+
+<a href="{% url 'novo_paciente' %}">
+    Novo Paciente
+</a>
+
+<hr>
+
+{% for paciente in pacientes %}
+
+<p>
+    <a href="{% url 'detalhe_paciente' paciente.id %}">
+        {{ paciente.nome }}
+    </a>
+</p>
+
+{% empty %}
+
+<p>Nenhum paciente cadastrado.</p>
+
+{% endfor %}
