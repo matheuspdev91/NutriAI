@@ -22,6 +22,133 @@ def __str__(self):
     return self.nome
 
 
+# ===========
+# ANAMNESE
+# ==========
+
+class Anamnese(models.Model):
+    paciente = models.OneToOneField(
+        Paciente,
+        on_delete=models.CASCADE,
+        related_name="anamnese"
+    )
+
+    objetivo = models.CharField(max_length=100)
+
+    profissao = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True
+    )
+
+    hora_de_sono = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        blank=True,
+        null=True
+    )
+
+    consumo_de_agua = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        blank=True,
+        null=True
+    )
+
+    medicamentos = models.TextField(
+        blank=True,
+        null=True
+    )
+
+    patologias = models.TextField(
+        blank=True,
+        null=True
+    )
+
+    alergias = models.TextField(
+        blank=True,
+        null=True
+    )
+
+    observacoes = models.TextField(
+        blank=True,
+        null=True
+    )
+
+    nivel_estresse = models.IntegerField(
+    blank=True,
+    null=True
+)
+
+    criado_em = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Anamnese"- {self.paciente.nome}
+    
+
+
+# ===================
+# HÁBITOS ALIMENTARES
+# ===================
+
+class HabitosAlimentares(models.Model):
+
+    paciente = models.OneToOneField(
+        Paciente,
+        on_delete=models.CASCADE,
+        related_name="habitos_alimentares"
+    )
+
+    cafe_da_manha = models.BooleanField(default=True)
+
+    almoco = models.BooleanField(default=True)
+
+    jantar = models.BooleanField(default=True)
+
+    lanches = models.BooleanField(default=False)
+
+    consumo_alcool = models.BooleanField(default=False)
+
+    fumante = models.BooleanField(default=False)
+
+    frequencia_fast_food = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True
+    )
+
+    alimentos_preferidos = models.TextField(
+        blank=True,
+        null=True
+    )
+
+    alimentos_rejeitados = models.TextField(
+        blank=True,
+        null=True
+    )
+
+    suplementacao = models.TextField(
+        blank=True,
+        null=True
+    )
+
+    observacoes = models.TextField(
+        blank=True,
+        null=True
+    )
+
+    quantidade_refeicoes = models.IntegerField(
+    blank=True,
+    null=True
+
+    )
+
+    atualizado_em = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Hábitos Alimentares - {self.paciente.nome}"
+
+
 # ===============
 # AVALIAÇÕES
 # ===============
@@ -34,7 +161,7 @@ class Avaliacao(models.Model):
         ("Melhora da Saúde Geral", "Melhora da Saúde Geral"),
     ]
 
-    paciente = models.ForeinKey(
+    paciente = models.ForeignKey(
         Paciente, on_delete=models.CASCADE, related_name="avaliacoes"
     )
 
