@@ -1,0 +1,78 @@
+<h1>Anamnese</h1>
+
+<h2>{{ paciente.nome }}</h2>
+
+<form method="post">
+
+    {% csrf_token %}
+
+    <p>
+        Objetivo:
+        <input
+            type="text"
+            name="objetivo"
+            required
+        >
+    </p>
+
+    <p>
+        Profissão:
+        <input
+            type="text"
+            name="profissao"
+        >
+    </p>
+
+    <p>
+        Horas de Sono:
+        <input
+            type="number"
+            step="0.1"
+            name="hora_de_sono"
+        >
+    </p>
+
+    <p>
+        Consumo de Água:
+        <input
+            type="number"
+            step="0.1"
+            name="consumo_de_agua"
+        >
+    </p>
+
+    <p>
+        Medicamentos:
+        <textarea name="medicamentos"></textarea>
+    </p>
+
+    <p>
+        Patologias:
+        <textarea name="patologias"></textarea>
+    </p>
+
+    <p>
+        Alergias:
+        <textarea name="alergias"></textarea>
+    </p>
+
+    <p>
+        Observações:
+        <textarea name="observacoes"></textarea>
+    </p>
+
+    <p>
+        Nível de Estresse (1 a 10):
+        <input
+            type="number"
+            min="1"
+            max="10"
+            name="nivel_estresse"
+        >
+    </p>
+
+    <button type="submit">
+        Salvar Anamnese
+    </button>
+
+</form>

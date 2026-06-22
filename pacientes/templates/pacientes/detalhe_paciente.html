@@ -1,3 +1,4 @@
+
 <h1>{{ paciente.nome }}</h1>
 
 <p>Sexo: {{ paciente.sexo }}</p>
@@ -9,6 +10,49 @@
 <p>Email: {{ paciente.email }}</p>
 
 <p>Telefone: {{ paciente.telefone }}</p>
+
+
+<a href="{% url 'cadastrar_anamnese' paciente.id %}">
+    Preencher Anamnese
+</a>
+
+
+<hr>
+
+<h2>Anamnese</h2>
+
+<p>DEBUG: {{ anamnese }}</p>
+
+{% if anamnese %}
+
+<p><strong>Objetivo:</strong> {{ anamnese.objetivo }}</p>
+
+<p><strong>Profissão:</strong> {{ anamnese.profissao }}</p>
+
+<p><strong>Horas de Sono:</strong> {{ anamnese.hora_de_sono }}</p>
+
+<p><strong>Consumo de Água:</strong> {{ anamnese.consumo_de_agua }}</p>
+
+<p><strong>Nível de Estresse:</strong> {{ anamnese.nivel_estresse }}</p>
+
+<p><strong>Medicamentos:</strong> {{ anamnese.medicamentos }}</p>
+
+<p><strong>Patologias:</strong> {{ anamnese.patologias }}</p>
+
+<p><strong>Alergias:</strong> {{ anamnese.alergias }}</p>
+
+<p><strong>Observações:</strong> {{ anamnese.observacoes }}</p>
+
+{% else %}
+
+<p>Anamnese não preenchida.</p>
+
+<a href="{% url 'cadastrar_anamnese' paciente.id %}">
+    Preencher Anamnese
+</a>
+
+{% endif %}
+<hr>
 
 <a href="{% url 'listar_pacientes' %}">
     Voltar

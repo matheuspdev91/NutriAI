@@ -16,4 +16,10 @@ urlpatterns = [
         views.detalhe_paciente,
         name="detalhe_paciente"
     ),
+
+    path(
+        "<int:paciente_id>/anamnese/",
+        views.cadastrar_anamnese,
+        name="cadastrar_anamnese"
+    ),
 ]

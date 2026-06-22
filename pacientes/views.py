@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
+from .models import Anamnese, Paciente
 
 from .models import Paciente
 
@@ -7,7 +8,7 @@ def listar_pacientes(request):
 
     return render(
         request,
-        "pacientes/listar.html",
+        "pacientes/listar_pacientes.html",
         {"pacientes": pacientes}
     )
 
@@ -35,9 +36,58 @@ def detalhe_paciente(request, paciente_id):
         id=paciente_id,
     )
 
+    anamnese = getattr(paciente, "anamnese", None)
+    print("PACIENTE:", paciente)
+    print("ANAMNESE:", anamnese)
+
     return render(
         request,
-        "pacientes/detalhe.html",
-        {"paciente": paciente},
+
+        "pacientes/detalhe_paciente.html",
+        {
+        "paciente": paciente,
+        "anamnese": anamnese,
+        }
+    )
+
+
+
+# ===================
+# CADASTRAR ANAMNESE
+# ===================
+
+def cadastrar_anamnese(request, paciente_id):
+
+    paciente = get_object_or_404(
+        Paciente,
+        id=paciente_id
+    )
+
+    if request.method == "POST":
+
+        Anamnese.objects.create(
+            paciente=paciente,
+            objetivo=request.POST.get("objetivo"),
+            profissao=request.POST.get("profissao"),
+            hora_de_sono=request.POST.get("hora_de_sono"),
+            consumo_de_agua=request.POST.get("consumo_de_agua"),
+            medicamentos=request.POST.get("medicamentos"),
+            patologias=request.POST.get("patologias"),
+            alergias=request.POST.get("alergias"),
+            observacoes=request.POST.get("observacoes"),
+            nivel_estresse=request.POST.get("nivel_estresse"),
+        )
+
+        return redirect(
+            "detalhe_paciente",
+            paciente_id=paciente.id
+        )
+
+    return render(
+        request,
+        "pacientes/anamnese.html",
+        {
+            "paciente": paciente
+        }
     )
 
