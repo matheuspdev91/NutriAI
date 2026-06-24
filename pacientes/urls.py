@@ -22,4 +22,6 @@ urlpatterns = [
         views.cadastrar_anamnese,
         name="cadastrar_anamnese"
     ),
+    
+    path("home/", views.home, name="home")
 ]

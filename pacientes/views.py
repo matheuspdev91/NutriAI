@@ -50,7 +50,11 @@ def detalhe_paciente(request, paciente_id):
         }
     )
 
-
+# ===================
+# HOME
+# ===================
+def home(request):
+    return render(request, "pacientes/home.html")
 
 # ===================
 # CADASTRAR ANAMNESE
