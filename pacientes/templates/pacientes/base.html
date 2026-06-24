@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrix — Avalie. Prescreva. Evolua.</title>
+    <meta name="description" content="A plataforma completa para nutricionistas modernos. Gerencie pacientes, avaliações, anamnese e planos alimentares em um único lugar.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'pacientes/css/nutrix.css' %}">
+  
+
+    <link rel="stylesheet" href="{% static 'pacientes/css/nutrix.css' %}">
+
+    {% block extra_css %}
+    {% endblock %}
+</head>
+<body>
+
+    <!-- Navbar -->
+    {% include 'partials/navbar.html' %}
+
+    <main class="container">
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    <!-- Footer -->
+    {% include 'partials/footer.html' %}
+
+    <script src="{% static 'pacientes/js/main.js' %}"></script>
+
+    {% block extra_js %}
+    {% endblock %}
+
+</body>
+</html>
