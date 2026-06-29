@@ -1,12 +1,13 @@
 {% extends 'pacientes/base.html' %}
 
-    <title>
-      {% block title %}
-          NutriAI
-      {% endblock %}
-    </title>
+{% load static %}
 
-  <main>
+{% block title %}
+Nutrix — Avalie. Prescreva. Evolua.
+{% endblock %}
+
+{% block content %}
+
 
     <!-- ══ HERO ═════════════════════════════════════════════════ -->
     <section class="hero" aria-labelledby="hero-title">
@@ -52,25 +53,25 @@
 
             <!-- Dashboard central -->
             <div class="hero-dashboard reveal">
-              <img src="{% 'paciente/img/dashboard.png %"} alt="" class="hero__dashboard-img" loading="eager" decoding="async">
+              <img src="{% 'pacientes/img/dashboard.png %"} alt="" class="hero__dashboard-img" loading="eager" decoding="async">
             </div>
 
             <!-- Cérebro / folha IA -->
             <div class="hero-brain reveal">
-              <img src="{% static 'paciente/img/cerebro.png' %}" alt="" loading="eager" decoding="async">
+              <img src="{% static 'pacientes/img/cerebro.png' %}" alt="" loading="eager" decoding="async">
             </div>
 
             <!-- Frutas flutuantes -->
             <div class="floating-fruit fruit--apple reveal">
-              <img src="{% static 'paciente/img/maca.png' %}" alt="" loading="lazy" decoding="async">
+              <img src="{% static 'pacientes/img/maca.png' %}" alt="" loading="lazy" decoding="async">
             </div>
 
             <div class="floating-fruit fruit--kiwi reveal">
-              <img src="{% static 'paciente/img/kiwi.png' %}" alt="" loading="lazy" decoding="async">
+              <img src="{% static 'pacients/img/kiwi.png' %}" alt="" loading="lazy" decoding="async">
             </div>
 
             <div class="floating-fruit fruit--avocado reveal">
-              <img src="{% static 'paciente/img/abacate.png' %}" alt="" loading="lazy" decoding="async">
+              <img src="{% static 'pacientes/img/abacate.png' %}" alt="" loading="lazy" decoding="async">
             </div>
 
             <div class="floating-fruit fruit--strawberry reveal">
@@ -185,8 +186,8 @@
       <div class="container ia__inner">
 
         <div class="ia__visual reveal">
-          <img src="assets/cerebro.png" alt="Inteligência artificial aplicada à nutrição" class="ia__img hero-brain" loading="lazy" decoding="async">
-          <img src="assets/frutas.png" alt="" class="ia__fruits" loading="lazy" decoding="async" aria-hidden="true">
+          <img src="{% static 'pacientes/img/cerebro.png' %}" alt="Inteligência artificial aplicada à nutrição" class="ia__img hero-brain" loading="lazy" decoding="async">
+          <img src="{% static 'pacientes/img/frutas.png' %}" alt="" class="ia__fruits" loading="lazy" decoding="async" aria-hidden="true">
         </div>
 
         <div class="ia__content">
@@ -230,7 +231,11 @@
         </div>
 
         <div class="dashboard-wrap reveal">
-          <img src="assets/dashboard.png" alt="Dashboard do Nutrix com métricas de progresso do paciente, composição corporal, calorias e plano alimentar" class="dashboard-img" loading="lazy" decoding="async">
+          <img src="{% static 'pacientes/img/dashboard.png' %}" 
+            alt="Dashboard do Nutrix com métricas de progresso do paciente, composição corporal, calorias e plano alimentar" 
+            class="dashboard-img" 
+            loading="lazy" 
+            decoding="async">
 
           <div class="dashboard-features">
             <div class="dashboard-feature reveal">
@@ -320,7 +325,7 @@
           </article>
 
           <article class="alimento-card reveal alimento-card--cta" style="--card-color: #F8FAF8; --card-accent: #22C55E">
-            <img src="assets/frutas.png" alt="" class="alimento-card__img" loading="lazy" decoding="async" aria-hidden="true">
+            <img src="{% static 'pacientes/fotos/frutas.png' %}" alt="" class="alimento-card__img" loading="lazy" decoding="async" aria-hidden="true">
             <p class="alimento-card__cta-text">Explore a biblioteca completa</p>
             <a href="#" class="btn btn--primary btn--sm">Ver tudo</a>
           </article>
@@ -411,8 +416,8 @@
 
           </div>
           <!-- Frutas decorativas no mockup -->
-          <img src="assets/abacate.png" alt="" class="planos__fruit planos__fruit--1" loading="lazy" decoding="async" aria-hidden="true">
-          <img src="assets/morango.png" alt="" class="planos__fruit planos__fruit--2" loading="lazy" decoding="async" aria-hidden="true">
+          <img src="{% static 'pacientes/fotos/abacate.png' %}" alt="" class="planos__fruit planos__fruit--1" loading="lazy" decoding="async" aria-hidden="true">
+          <img src="{% static 'pacientes/fotos/morango.png' %}" alt="" class="planos__fruit planos__fruit--2" loading="lazy" decoding="async" aria-hidden="true">
         </div>
 
       </div>
@@ -507,7 +512,7 @@
     <!-- ══ CTA FINAL ═════════════════════════════════════════════ -->
     <section class="cta-final" aria-labelledby="cta-title">
       <div class="cta-final__leaves" aria-hidden="true">
-        <img src="assets/folhas.png" alt="" loading="lazy" decoding="async">
+        <img src="{% static 'pacientes/img/folhas.png' %}" alt="" loading="lazy" decoding="async">
       </div>
       <div class="container cta-final__inner">
         <p class="eyebrow eyebrow--white reveal">Comece hoje</p>
@@ -520,9 +525,6 @@
       </div>
     </section>
 
-  </main>
-
   <script src="{% static 'pacientes/js/home.js' %}"></script>
 
-</body>
-</html>
+{% endblock %}
